@@ -11,6 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.MarkerManager;
 
+import com.production.stories.Stories;
+
 /**
  * Servlet implementation class IndexServlet
  */
@@ -34,7 +36,10 @@ public class IndexServlet extends HttpServlet {
 		
 		//System.out.println("index servlet");
 		
-        request.getRequestDispatcher("/WEB-INF/jsp/index.html")
+		request.setAttribute("line", Stories.htmlLine);
+		request.setAttribute("story", Stories.cowboys);
+		
+        request.getRequestDispatcher("/WEB-INF/jsp/index.jsp")
         .forward(request, response);			
     }
 
@@ -43,8 +48,7 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-        request.getRequestDispatcher("/WEB-INF/jsp/index.html")
-        .forward(request, response);	
+        doGet(request, response);	
 	}
 
 }

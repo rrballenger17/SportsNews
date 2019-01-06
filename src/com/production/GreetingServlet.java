@@ -3,7 +3,11 @@ package com.production;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -74,7 +78,9 @@ public class GreetingServlet extends HttpServlet {
             
 		
 		
-		LocalDateTime now =LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("h:mm a 'on' MMM d, yyyy"); 
+		LocalDateTime now = LocalDateTime.now(); 
+		String fDate = dtf.format(now); 
 		
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
@@ -88,7 +94,7 @@ public class GreetingServlet extends HttpServlet {
               .append("    <body>\r\n")
              
       		.append("Welcome " + user + "to Sports News!")
-			.append("<br/>The current time is: " + now.toString());
+			.append("<br/>The current time is: " + fDate);
         
         
         	if(topics != null) {

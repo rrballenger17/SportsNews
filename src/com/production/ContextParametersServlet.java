@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.production.stories.Stories;
+
 /**
  * Servlet implementation class ContextParametersServlet
  */
@@ -32,12 +34,18 @@ public class ContextParametersServlet extends HttpServlet {
 		ServletContext c = this.getServletContext();
 		
 		// TODO Auto-generated method stub
+				
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		
 		
 		response.getWriter().append("\nSetting one: " + c.getInitParameter("settingOne"))
 		.append("\n")
 		.append("Setting two: " + c.getInitParameter("settingTwo"));
+	
+		response.getWriter().append(Stories.line);
+	
+		response.getWriter().append(Stories.nflPlayoffBrackets.replaceAll("<br/>", "\n" ));
 	}
 
 	/**
@@ -47,5 +55,6 @@ public class ContextParametersServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 
 }
