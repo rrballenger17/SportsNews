@@ -23,5 +23,10 @@
             
             <input type="submit" value="Log In" />
         </form>
+        <br />
+        <br />
+        <br />
+        <br />
+		New to Sports News? Login with "guest" and no password.
     </body>
 </html>
